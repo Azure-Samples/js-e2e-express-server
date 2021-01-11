@@ -6,7 +6,20 @@ const create = async () => {
 
     app.get('/', (req, res) => {
 
-        res.send("Hello World");
+        const html = `
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>Express</title>
+            </head>
+            <body>
+                <h1>Express</h1>
+                <p>Welcome to Express</p>
+            </body>
+        </html>
+        `
+
+        res.send(html);
     });
 
     return app;
