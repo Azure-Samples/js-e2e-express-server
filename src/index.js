@@ -1,6 +1,6 @@
 const server = require('./server');
 
-const port = process.env.WEB_PORT || 8080;
+const port = process.env.WEB_PORT || 3000;
 
 server.create()
     .then(app => {
