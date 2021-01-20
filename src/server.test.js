@@ -1,8 +1,6 @@
 const request = require('supertest');
 const { create } = require('./server.js');
 
-
-
 describe('root', () => {
 
     it('request root, returns html', async (done) => {
