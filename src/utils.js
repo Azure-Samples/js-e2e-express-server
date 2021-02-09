@@ -6,10 +6,10 @@ const timeStamp = () => {
 const binaryParser = (res, callback) => {
     res.setEncoding('binary');
     res.data = '';
-    res.on('data', function (chunk) {
+    res.on('data', (chunk) => {
         res.data += chunk;
     });
-    res.on('end', function () {
+    res.on('end', () => {
         callback(null, Buffer.from(res.data, 'binary'));
     });
 };
