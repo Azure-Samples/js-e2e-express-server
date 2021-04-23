@@ -8,8 +8,8 @@
     "test": "test"
   },
   "scripts": {
-    "postbuild": "npm install",
-    "start": "node src/index.js --max-http-header-size 81000",
+    "start": "pm2 start src/index.js",
+    "stop": "pm2 stop 0",
     "start:dev": "npm run lint && nodemon --exec node src/index.js --unhandled-rejections=warn",
     "test": "jest --detectOpenHandles --coverage",
     "lint": "eslint src/**/*.js --fix"
@@ -34,6 +34,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.4.2",
     "nodemon": "^2.0.4",
+    "pm2": "^4.5.6",
     "prettier": "^2.1.2",
     "supertest": "^6.1.1"
   },

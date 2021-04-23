@@ -7,5 +7,6 @@
     "appService.deploySubpath": ".",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
+    "appService.showBuildDuringDeployPrompt": true
 }

@@ -26,11 +26,6 @@ const create = async () => {
         res.sendFile(path.join(__dirname, '../public/client.html'));
     });
     
-    // Authentication Redirect - serve static file
-    app.get('/.auth/login/aad/callback', (req, res) => {
-        res.sendFile(path.join(__dirname, '../public/authenticated.html'));
-    });
-    
     // Error handler
     /* eslint-disable no-unused-vars */
     app.use((err, req, res, next) => {
