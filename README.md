@@ -50,7 +50,7 @@ When deployed to Azure, reads the `.deployment` file's `SCM_DO_BUILD_DURING_DEPL
 ### Ports
 
 * Default port is 8080.
-* Is using a different port, use the uppercase `PORT` environment variable. `const port = process.env.PORT || 3000`
+* If using a different port, use the uppercase `PORT` environment variable. `const port = process.env.PORT || 8080`
 
 ### Azure Active Directory Authentication
 

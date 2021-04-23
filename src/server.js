@@ -16,7 +16,7 @@ const create = async () => {
     const app = express();
     
     // Trust the Azure proxy, test HTTPS with req.secure
-    app.set('trust proxy', 1)
+    app.set('trust proxy', 1);
     
     // configure nonFeature
     app.use(ignoreFavicon);
@@ -30,7 +30,7 @@ const create = async () => {
     /* eslint-disable no-unused-vars */
     app.use((err, req, res, next) => {
         console.error(err.stack);
-        res.status(500).send('Something broke! ' + req.route.path);
+        res.status(500).send(`Something broke! ${  req.route.path}`);
     });
     return app;
 };
