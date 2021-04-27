@@ -21,7 +21,7 @@ const create = async () => {
     // configure nonFeature
     app.use(ignoreFavicon);
 
-    // Root route - serve static file
+    // Public route - serve static file
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../public/client.html'));
     });
