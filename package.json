@@ -1,0 +1,36 @@
+{
+  "name": "js-e2e-express-server",
+  "version": "1.0.0",
+  "description": "JavaScript server written with Express.js",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diberry/js-e2e-express-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diberry/js-e2e-express-server/issues"
+  },
+  "homepage": "https://github.com/diberry/js-e2e-express-server#readme",
+  "dependencies": {
+    "@azure/msal-node": "^1.0.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  }
+}
