@@ -22,6 +22,9 @@ const create = async () => {
     app.get('/', (req, res) => {
         res.sendFile(path.join(__dirname, '../public/client.html'));
     });
+    app.get('/moon', (req, res) => {
+        res.sendFile(path.join(__dirname, '../public/moon.html'));
+    });
 
     // Error handler
     /* eslint-disable no-unused-vars */
