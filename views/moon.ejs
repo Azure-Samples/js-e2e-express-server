@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Moon</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+
+      th{
+        border: 1px solid black;
+        text-align: center;
+        padding-right: 10px;
+        padding-left: 10px;
+      }
+      td{
+        border: 1px solid black;
+        text-align: center;
+        padding: 20px;
+      }
+      table{
+        margin-bottom: 20px;
+      }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+      <h1>Moon</h1>
+      <p>Welcome to Moon</p>
+
+      <table>
+        <thead>
+          <th>Day</th>
+          <th>Phase</th>
+          <th>Percentage</th>
+          <th>Moon Rise</th>
+          <th>Moon Set</th>
+          <th>Location</th>
+        </thead>
+        <tr>
+          <td>Today</td>
+          <td id='phase'></td>
+          <td id='percentage'></td>
+          <td id='moon_rise'></td>
+          <td id='moon_set'></td>
+          <td id='loc'></td>
+        </tr>
+      </table>
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="New Location" id='input_loc'>
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit" onclick="load_new_loc()">Submit</button>
+        </div>
+      </div>
+    </div>
+
+</body>
+
+<script src='js/moon_data.js'></script>
+
+</html>

@@ -14,18 +14,26 @@ const create = async () => {
 
     // server
     const app = express();
+    app.use(express.static(path.join(__dirname,'..','public')));
+    app.set('views', path.join(__dirname,'..','views'));
+    app.set('view engine', 'ejs');
+    var routs = require('./routs.js');
 
     // configure nonFeature
     app.use(ignoreFavicon);
 
-    // root route - serve static file
-    app.get('/', (req, res) => {
-        res.sendFile(path.join(__dirname, '../public/client.html'));
-    });
-    app.get('/moon', (req, res) => {
-        res.sendFile(path.join(__dirname, '../public/moon.html'));
-    });
-    
+    app.use('/', routs);
+
+    // app.get('/', (req, res) => {
+    //     res.sendFile(path.join(__dirname, '../views/client.html'));
+    // });
+    // app.get('/moon', (req, res) => {
+    //     res.sendFile(path.join(__dirname, '../views/moon.html'));
+    // });
+    // app.get('/login/:usr', (req, res) => {
+    //     res.render(path.join(__dirname, '../views/login.ejs'),{usr:'paytondugas'});
+    // });
+
 
     // Error handler
     /* eslint-disable no-unused-vars */
