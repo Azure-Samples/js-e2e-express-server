@@ -9,4 +9,5 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
     },
+    "appService.defaultWebAppToDeploy": "/subscriptions/15d75184-d537-4e81-bcd5-8b6909ddeb66/resourceGroups/MentorshipProj01-rg/providers/Microsoft.Web/sites/MentorshipProj01",
 }
