@@ -9,6 +9,12 @@ const ignoreFavicon = (req, res, next) => {
     next();
 };
 
+var appLogger = (req, res, next) => {
+    let method = req.method;
+    let path = req.path;
+    console.log(`${method} ${path} ${Date()}`);
+};
+
 // fn to create express server
 const create = async () => {
 
@@ -19,9 +25,11 @@ const create = async () => {
     app.use(ignoreFavicon);
 
     // root route - serve static file
-    app.get('/', (req, res) => {
+    app.get('/', (req, res, next) => {
         res.sendFile(path.join(__dirname, '../public/client.html'));
+        next();
     });
+    app.use(appLogger);
 
     // Error handler
     /* eslint-disable no-unused-vars */
