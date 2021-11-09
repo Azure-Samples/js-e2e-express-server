@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/diberry/js-e2e-express-server.git"
+    "url": "git+https://github.com/azure-samples/js-e2e-express-server.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/diberry/js-e2e-express-server/issues"
+    "url": "https://github.com/azure-samples/js-e2e-express-server/issues"
   },
-  "homepage": "https://github.com/diberry/js-e2e-express-server#readme",
+  "homepage": "https://github.com/azure-samples/js-e2e-express-server#readme",
   "devDependencies": {
     "eslint": "^7.9.0",
     "eslint-config-airbnb": "^18.2.0",
