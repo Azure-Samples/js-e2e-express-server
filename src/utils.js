@@ -20,39 +20,32 @@ const ignoreFavicon = (req, res, next) => {
   }
   next();
 };
-const getActualRequestDurationInMilliseconds = (start) => {
-  const NS_PER_SEC = 1e9; //  convert to nanoseconds
-  const NS_TO_MS = 1e6; // convert to milliseconds
-  const diff = process.hrtime(start);
-  return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
-};
 const appLogger = (req, res, next) => {
-  const src_ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  const method = req.method;
-  const url = req.url;
+  const srcIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  const {method} = req;
+  const {url} = req;
+  const status = res.statusCode;
 
-  const start = process.hrtime();
+  console.log(`${srcIp} - ${method} ${url} ${status}`);
 
-  res.on('finish', function () {
-    const status = res.statusCode;
-    const processTimeMs = getActualRequestDurationInMilliseconds(start);
-    const log = `${src_ip} - ${method} ${url} ${status} ${processTimeMs.toLocaleString()} ms`;
-    console.log(log, { url, status, processTimeMs, src_ip });
-  });
   next();
 };
 const logErrors = (err, req, res, next) => {
   console.error(err.stack);
   next(err);
 };
-const clientErrorHandler = (err, req, res, next) => {
+// Route not found (404)
+const clientError404Handler = (req, res) =>{
+  return res.status(404).send(`Cannot GET ${req.url}`);
+};
+const clientError500Handler = (err, req, res, next) => {
   if (req.xhr) {
     res.status(500).send({ error: 'Something failed!' });
   } else {
     next(err);
   }
 };
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   res.status(500);
   res.render('error', { error: err });
 };
@@ -63,6 +56,7 @@ module.exports = {
   ignoreFavicon,
   appLogger,
   logErrors,
-  clientErrorHandler,
+  clientError500Handler,
+  clientError404Handler,
   errorHandler,
 };

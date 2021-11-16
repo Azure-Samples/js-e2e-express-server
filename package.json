@@ -8,6 +8,7 @@
     "test": "test"
   },
   "scripts": {
+    "build": "npm run lint",
     "start": "node src/index.js",
     "start:dev": "npm run lint && nodemon --exec node src/index.js --unhandled-rejections=warn",
     "test": "jest --detectOpenHandles --coverage",
@@ -39,7 +40,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "serve-favicon": "^2.5.0"
   },
   "prettier": {
     "printWidth": 80,
