@@ -1,5 +1,5 @@
 const request = require('supertest');
-const { create } = require('./server.js');
+const { create } = require('./server');
 
 describe('root', () => {
 
@@ -15,10 +15,22 @@ describe('root', () => {
                 done();
             }).catch(err => done(err));;
     });
+    it('request api, returns json', async (done) => {
+
+        const app = await create();
+
+        return request(app)
+            .get('/api/hello')
+            .expect(200)
+            .then((res) => {
+                expect(res.body).toEqual({ hello: 'goodbye' });
+                done();
+            }).catch(err => done(err));;
+    });    
     it('request invalid path, returns 404', async (done) => {
 
         const app = await create();
-        const invalidPath = `/invalid-path`;
+        const invalidPath = '/invalid-path';
         const invalidPathError = `Cannot GET ${invalidPath}`;
 
         return request(app)
