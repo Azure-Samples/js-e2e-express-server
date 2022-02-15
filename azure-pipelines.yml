@@ -31,10 +31,3 @@ steps:
         summaryFileLocation: "nodejs/$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
         reportDirectory: "nodejs/$(System.DefaultWorkingDirectory)/coverage"
         failIfCoverageEmpty: false
-
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publish code coverage report'
-  inputs:
-        codeCoverageTool: 'Cobertura'
-        summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
-        failIfCoverageEmpty: true
