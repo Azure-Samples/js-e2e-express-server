@@ -25,5 +25,5 @@ steps:
     testResultsFiles: '**/TEST-*.xml'
 - task: PublishCodeCoverageResults@1
   inputs:
-     codeCoverageTool: 'Cobertura'
-     summaryFileLocation: 'coverage/cobertura-coverage.xml'
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'Coverage/cobertura.xml'
