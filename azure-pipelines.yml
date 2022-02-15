@@ -20,6 +20,7 @@ steps:
         testResultsFormat: 'JUnit'
         testResultsFiles: 'nodejs/junit.xml'
         failTaskOnFailedTests: true
+        publishTestResults: true
         mergeTestResults: true
   condition: succeededOrFailed()
 
