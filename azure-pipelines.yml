@@ -14,16 +14,27 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-
-- script: |
-    npm install
-    npm run coverage
-  displayName: 'npm install and output coverage'
 - task: PublishTestResults@2
+  displayName: "Publish Test Results"
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
+        testResultsFormat: 'JUnit'
+        testResultsFiles: 'nodejs/junit.xml'
+        failTaskOnFailedTests: true
+        mergeTestResults: true
+  condition: succeededOrFailed()
+
+    # The following, two are not functioning as no coverage.cobertura.xml file is being created.
 - task: PublishCodeCoverageResults@1
+  displayName: "Publish code coverage"
   inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: 'Coverage/cobertura.xml'
+        codeCoverageTool: Cobertura
+        summaryFileLocation: "nodejs/$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
+        reportDirectory: "nodejs/$(System.DefaultWorkingDirectory)/coverage"
+        failIfCoverageEmpty: false
+
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish code coverage report'
+  inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+        failIfCoverageEmpty: true
