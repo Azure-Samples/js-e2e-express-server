@@ -12,7 +12,8 @@
     "start": "node src/index.js",
     "start:dev": "npm run lint && nodemon --exec node src/index.js --unhandled-rejections=warn",
     "test": "jest --detectOpenHandles --coverage",
-    "lint": "eslint src/**/*.js --fix"
+    "lint": "eslint src/**/*.js --fix",
+    "coverage": "jest --coverage --coverageReporters=cobertura"
   },
   "repository": {
     "type": "git",
