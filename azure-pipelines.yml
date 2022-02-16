@@ -25,10 +25,12 @@ steps:
   condition: succeededOrFailed()
 
     # The following, two are not functioning as no coverage.cobertura.xml file is being created.
+- script: |
+    reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
+  displayName: 'Create code coverage report'
+
 - task: PublishCodeCoverageResults@1
-  displayName: "Publish code coverage"
+  displayName: 'Publish code coverage report'
   inputs:
-        codeCoverageTool: Cobertura
-        summaryFileLocation: "nodejs/$(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml"
-        reportDirectory: "nodejs/$(System.DefaultWorkingDirectory)/coverage"
-        failIfCoverageEmpty: false
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
