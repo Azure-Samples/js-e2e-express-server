@@ -14,23 +14,19 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-- task: PublishTestResults@2
-  displayName: "Publish Test Results"
-  inputs:
-        testResultsFormat: 'JUnit'
-        testResultsFiles: 'nodejs/junit.xml'
-        failTaskOnFailedTests: true
-        publishTestResults: true
-        mergeTestResults: true
-  condition: succeededOrFailed()
 
     # The following, two are not functioning as no coverage.cobertura.xml file is being created.
-- script: |
-    reportgenerator -reports:$(Build.SourcesDirectory)/**/coverage.cobertura.xml -targetdir:$(Build.SourcesDirectory)/CodeCoverage -reporttypes:HtmlInline_AzurePipelines
-  displayName: 'Create code coverage report'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+        command: 'test'
+        arguments: '--configuration $(buildConfiguration) --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura'
+        publishTestResults: true
+        projects: 'tests/Frontends/GloboTicket.Web.Tests' # update with your test project directory
 
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
   inputs:
-    codeCoverageTool: 'cobertura'
-    summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+        codeCoverageTool: 'Cobertura'
+        #summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml' ## This is not working. What you need is the following.
+        summaryFileLocation: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
