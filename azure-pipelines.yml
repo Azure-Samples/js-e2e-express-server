@@ -66,7 +66,7 @@ stages:
             inputs:
               azureSubscription: 'AzureDevOps Pro Subscription 1(996ec04d-f171-4281-a17b-ca0209711e2b)'
               appType: 'webAppLinux'
-              appName: 'adpnode'
+              appName: 'nodeadp'
               package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
               runtimeStack: 'NODE|14-lts'
               startUpCommand: 'npm run start'
