@@ -26,8 +26,7 @@ stages:
     steps:
     - task: NodeTool@0
       inputs:
-        versionSpec: '14.x'
-        checkLatest: true
+        versionSpec: '1.x'
       displayName: 'Install Node.js'
 
     - script: |
@@ -69,5 +68,5 @@ stages:
               appType: 'webAppLinux'
               appName: 'adpnode'
               package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
-              runtimeStack: 'NODE|10.10'
+              runtimeStack: 'NODE|16-lts'
               startUpCommand: 'npm run start'
