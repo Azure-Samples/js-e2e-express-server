@@ -8,12 +8,6 @@ trigger:
 
 variables:
 
-  # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: '7baf1fb2-4773-42a2-a269-e46f8eb61c61'
-
-  # Web app name
-  webAppName: 'adpnode'
-
   # Environment name
   environmentName: 'dev'
 
@@ -70,9 +64,9 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure Web App Deploy: '
             inputs:
-              azureSubscription: $(azureSubscription)
-              appType: webAppLinux
-              appName: $(webAppName)
+              azureSubscription: 'AzureDevOps Pro Subscription 1(996ec04d-f171-4281-a17b-ca0209711e2b)'
+              appType: 'webAppLinux'
+              appName: 'adpnode'
+              package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
               runtimeStack: 'NODE|10.10'
-              package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
               startUpCommand: 'npm run start'
