@@ -1,16 +1,10 @@
 pipeline{
     agent any
-    parameters{
-        choice(name: 'CHOOSE_BRANCH', choices: ['main','New_REL1.0'], description: 'Branch to build') 
-    }
-    triggers{
-        pollSCM('* * * * *')
-    }
     stages{
         stage('vcs'){
             steps{
                 git url:'https://github.com/ziyad-ansari/js-e2e-express-server-mine.git',
-                branch:"${params.CHOOSE_BRANCH}"
+                branch:"New_REL1.0"
             }
         }
         stage('build'){
