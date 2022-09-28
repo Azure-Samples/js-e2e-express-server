@@ -1,5 +1,5 @@
 pipeline{
-    agent {label 'NODE-JS-NPM'}
+    agent any
     parameters{
         choice(name: 'CHOOSE_BRANCH', choices: ['main','New_REL1.0'], description: 'Branch to build') 
     }
