@@ -1,35 +1,6 @@
-# Node.js
-# Build a general Node.js project with npm.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+- powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
-# trigger:
-# - main
-
-# pool:
-#   vmImage: ubuntu-latest
-
-# steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '10.x'
-#   displayName: 'Install Node.js'
-
-# - script: |
-#     npm install
-#     npm run build
-#   displayName: 'npm install and build'
-
-
-# Publish build artifacts
-# Publish build artifacts to Azure Pipelines or a Windows file share
 - task: PublishBuildArtifacts@1
   inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)' 
-    artifactName: 'drop' 
-    publishLocation: 'Container' # Options: container, filePath
-    # targetPath: # Required when publishLocation == FilePath
-    # parallel: false # Optional
-    # parallelCount: # Optional
-    # fileCopyOptions: #Optional
-    storeAsTar: true # Optional
+    pathToPublish: '$(Build.ArtifactStagingDirectory)'
+    artifactName: drop
