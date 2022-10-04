@@ -1,5 +1,10 @@
+# Publish build artifacts
+# Publish build artifacts to Azure Pipelines or a Windows file share
+trigger:
+  - main
+    
+steps:
 - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
-
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
