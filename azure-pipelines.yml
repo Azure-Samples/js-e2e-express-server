@@ -3,6 +3,9 @@
 pr:
   - main
 
+trigger:
+  none
+
 steps:
 - task: CopyFiles@1
   inputs:
