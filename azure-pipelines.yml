@@ -1,6 +1,6 @@
 # Publish build artifacts
 # Publish build artifacts to Azure Pipelines or a Windows file share
-trigger:
+pr:
   - main
 
 steps:
