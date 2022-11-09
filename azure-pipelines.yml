@@ -42,7 +42,7 @@ steps:
 # Release to GitHub
 - task: GitHubRelease@1
   inputs:
-    gitHubConnection: ABueter
+    gitHubConnection: 'Token to GitHub'
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     tagSource: 'GitTag'
