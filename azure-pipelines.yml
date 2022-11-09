@@ -16,7 +16,9 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    echo "Installing Package ..."
     npm install
+    echo "Building Package ..."
     npm run build
   displayName: 'npm install and build'
 
