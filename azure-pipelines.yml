@@ -10,6 +10,10 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+- checkout: self
+  persistCredentials: true
+  clean: true
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
@@ -34,3 +38,12 @@ steps:
   condition: eq(variables['Build.SourceBranch'], 'refs/head/main')
   name: npm_bump_script
   displayName: 'Bump version'
+
+# Release to GitHub
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: ABueter
+    repositoryName: '$(Build.Repository.Name)'
+    action: 'create'
+    tagSource: 'GitTag'
+    addChangeLog: true
