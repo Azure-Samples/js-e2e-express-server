@@ -19,3 +19,16 @@ steps:
     npm install
     npm run build
   displayName: 'npm install and build'
+
+- script: |
+    echo "Installing standard-version package ..."
+    npm install -g standard-version
+    echo "Configuring git ..."
+    git config --global user.email "azure@bot.com"
+    git config --global user.name "Azurebot"
+    echo "Bumping ..."
+    standard-version
+    git push --follow-tags origin HEAD:$(Build.SourceBranchName)
+  condition: eq(variables['Build.SourceBranch'], 'refs/head/main')
+  name: npm_bump_script
+  displayName: 'Bump version'
