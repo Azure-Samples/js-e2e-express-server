@@ -45,4 +45,6 @@ steps:
     gitHubConnection: 'Token to GitHub'
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
+    tagSource: 'gitTag'
+    tagPattern: '*.*.*'
     addChangeLog: true
