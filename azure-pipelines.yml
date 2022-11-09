@@ -45,5 +45,6 @@ steps:
     gitHubConnection: 'Token to GitHub'
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
-    tagSource: 'gitTag'
+    tagSource: userSpecifiedTag
+    tag: ./package.json:version
     addChangeLog: true
