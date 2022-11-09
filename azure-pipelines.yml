@@ -46,5 +46,5 @@ steps:
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     tagSource: 'gitTag'
-    tagPattern: 'v*.*.*'
+    tagPattern: '*.*.*'
     addChangeLog: true
