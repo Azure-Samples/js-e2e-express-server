@@ -39,14 +39,10 @@ steps:
   name: npm_bump_script
   displayName: 'Bump version'
 
-- powershell: $tag = Get-Content ./package.json:version 
-
 # Release to GitHub
 - task: GitHubRelease@1
   inputs:
     gitHubConnection: 'Token to GitHub'
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
-    tagSource: userSpecifiedTag
-    tag: "$tag"
     addChangeLog: true
