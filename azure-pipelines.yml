@@ -19,5 +19,4 @@ steps:
   displayName: 'npm build'
   
 - script: |
-    npm install webpack webpack-cli --save-dev
     npx webpack --config webpack.config.js
