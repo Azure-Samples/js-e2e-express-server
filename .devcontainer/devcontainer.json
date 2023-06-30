@@ -1,0 +1,37 @@
+{
+  "name": "Dev Containers",
+  // Use a Dockerfile or Docker Compose file: https://containers.dev/guide/dockerfile
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "remoteUser": "node",
+  "forwardPorts": [
+    3000,
+    8000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Home Page",
+      "onAutoForward": "notify"
+    }
+  },
+  "mounts": [],
+  "postCreateCommand": {
+    "node-info": "echo NODE is $(node -v) - NPM is v$(npm -v)",
+    "user-info": "echo You are running as [$(whoami)]"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "eamodio.gitlens",
+        "ChakrounAnas.turbo-console-log",
+        "bierner.markdown-mermaid",
+        "bierner.markdown-footnotes",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {}
+    }
+  }
+}
