@@ -1,10 +1,14 @@
-const server = require('./server');
+import { create } from './server.js';
 
 const port = process.env.PORT || 3000;
 
-server.create()
+create()
     .then(app => {
         app.listen(port, () => {
             console.log(`Server has started on port ${port}!`);
         });
-    }).catch(err => console.log(err));
+    })
+    .catch(err => {
+        console.error(`Failed to start the server: ${err.message}`);
+        process.exit(1);
+    });
