@@ -1,14 +1,14 @@
-const express = require('express');
-const favicon = require('serve-favicon');
-const path = require('path');
-const utils = require('./utils');
+import express from 'express';
+import favicon from 'serve-favicon';
+import path from 'path';
+import * as utils from './utils.js';
 
 // fn to create express server
 const create = async () => {
 
     // server
     const app = express();
-    app.use(favicon(path.join(__dirname, '../public', 'favicon.ico')));
+    app.use(favicon(path.join(process.cwd(), './public', 'favicon.ico')));
     
     // Log request
     app.use(utils.appLogger);
@@ -20,10 +20,7 @@ const create = async () => {
     });
 
     // root route - serve static file
-    app.get('/', (req, res) => {
-        return res.sendFile(path.join(__dirname, '../public/client.html'));
-
-    });
+    app.get('/', (req, res) => res.sendFile(path.join(process.cwd(), './public/client.html')));
 
     // Catch errors
     app.use(utils.logErrors);
@@ -34,6 +31,4 @@ const create = async () => {
     return app;
 };
 
-module.exports = {
-    create
-};
+export { create };

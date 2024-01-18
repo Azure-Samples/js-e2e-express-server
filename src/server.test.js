@@ -1,44 +1,35 @@
-const request = require('supertest');
-const { create } = require('./server');
+import request from 'supertest';
+import { create } from './server.js';
 
-describe('root', () => {
+describe('API', () => {
 
-    it('request root, returns html', async (done) => {
+    let app;
 
-        const app = await create();
-
-        return request(app)
-            .get('/')
-            .expect(200)
-            .then((res) => {
-                expect(res.text).toContain('Welcome to Express');
-                done();
-            }).catch(err => done(err));;
+    beforeAll(async () => {
+        app = await create();
     });
-    it('request api, returns json', async (done) => {
 
-        const app = await create();
+    it('root request', async () => {
+        const response = await request(app).get('/');
 
-        return request(app)
-            .get('/api/hello')
-            .expect(200)
-            .then((res) => {
-                expect(res.body).toEqual({ hello: 'goodbye' });
-                done();
-            }).catch(err => done(err));;
-    });    
-    it('request invalid path, returns 404', async (done) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.text).toContain('Welcome to Express');
+    });
 
-        const app = await create();
+    it('request api, returns json', async () => {
+        const response = await request(app).get('/api/hello');
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toEqual({ hello: 'goodbye' });
+    });
+
+    it('request invalid path, returns 404', async () => {
         const invalidPath = '/invalid-path';
         const invalidPathError = `Cannot GET ${invalidPath}`;
 
-        return request(app)
-            .get(invalidPath)
-            .expect(404)
-            .then((res) => {
-                expect(res.text).toContain(invalidPathError);
-                done();
-            }).catch(err => done(err));;
+        const response = await request(app).get(invalidPath);
+
+        expect(response.statusCode).toBe(404);
+        expect(response.text).toContain(invalidPathError);
     });
 });
