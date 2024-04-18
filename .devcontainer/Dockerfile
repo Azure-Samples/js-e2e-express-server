@@ -1,1 +1,1 @@
-FROM node:18.4.0-alpine
+FROM mcr.microsoft.com/devcontainers/javascript-node:20-bullseye
