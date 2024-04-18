@@ -28,15 +28,6 @@ This is a basic Express.js server used for JS Dev Experience documentation, in p
     npm start
     ```
 
-# Dev Containers
-Esto es un `fork` del proyecto official [js-e2e-express-server](https://github.com/Azure-Samples/js-e2e-express-server).
+    ## Resources
 
-Se inluye carpeta `.devcontainer`, y los archivos `devcontainer.json` y `Dockerfile` para utilizar este proyecto como un Dev Container.
-
-Ejecución del Dev Containers.
-![](public/resources/container-js-e2e-express-server.gif)
-El Dev Containers corriendo.
-![](public/resources/container-js-e2e-express-server.png)
-
-* [Create Dev Container](https://code.visualstudio.com/docs/devcontainers/create-dev-container).
-* [Dev Containers - Marketplace VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
+   * [Dev container](docs/devcontainer.md)
