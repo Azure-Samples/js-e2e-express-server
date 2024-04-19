@@ -22,7 +22,7 @@ This is a basic Express.js server used for JS Dev Experience documentation, in p
     npm install
     ```
 
-1. Environment for port
+1. Configure environment variable name for port in `./src/index.js`.
 
     * Azure App Service on Linux: process.env.WEB_PORT
     * Azure App Service on Windows native: process.env.PORT
