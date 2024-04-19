@@ -36,3 +36,4 @@ This is a basic Express.js server used for JS Dev Experience documentation, in p
 # Resources 
 
 * [Dev Containers](docs/devcontainer.md)
+* [Sample: App Service full stack with Authentication](https://github.com/azure-samples/js-e2e-web-app-easy-auth-app-to-app)
