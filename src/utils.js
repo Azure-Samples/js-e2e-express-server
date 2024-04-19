@@ -35,9 +35,7 @@ const logErrors = (err, req, res, next) => {
   next(err);
 };
 // Route not found (404)
-const clientError404Handler = (req, res) =>{
-  return res.status(404).send(`Cannot GET ${req.url}`);
-};
+const clientError404Handler = (req, res) =>res.status(404).send(`Cannot GET ${req.url}`);
 const clientError500Handler = (err, req, res, next) => {
   if (req.xhr) {
     res.status(500).send({ error: 'Something failed!' });
