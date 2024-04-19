@@ -22,6 +22,11 @@ This is a basic Express.js server used for JS Dev Experience documentation, in p
     npm install
     ```
 
+1. Environment for port
+
+    * Azure App Service on Linux: process.env.WEB_PORT
+    * Azure App Service on Windows native: process.env.PORT
+
 1. Start project: 
 
     ```bash
