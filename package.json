@@ -1,4 +1,4 @@
-{
+{ #
   "name": "js-e2e-express-server",
   "version": "1.0.0",
   "description": "JavaScript server written with Express.js",
