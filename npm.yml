@@ -1,0 +1,43 @@
+trigger:
+- none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: UseNode@1
+  inputs:
+    version: '16.X'
+  displayName: 'Install Node.js'
+
+
+- script: |
+    npm install
+  displayName: 'npm install'
+
+- script: |
+    npm run build
+  displayName: 'npm build'
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: |
+       src/*
+       public/*
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
+  displayName: 'Copy project files'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    artifactName: e2e-server
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    publishLocation: 'pipeline'
+  displayName: 'Publish npm artifact'
+
+
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    workingDir: '$(Build.Repository.LocalPath)'
+    publishRegistry: 'useFeed'
+    publishFeed: 'NPM test/holi'
