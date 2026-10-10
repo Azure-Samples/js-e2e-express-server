@@ -1,0 +1,24 @@
+name: 1.0$(Rev:.r)
+
+trigger:
+- main
+
+pr:
+  branches:
+    include:
+    - main
+  paths:
+    include:
+    - src/**
+
+variables:
+  name: namnam
+
+pool:
+  name: Default
+
+jobs:
+- job: helloworld
+  steps:
+  - checkout: self
+  - script: echo "Hello, $(name)"
