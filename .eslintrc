@@ -19,7 +19,6 @@
   },
   "ignorePatterns": [
     ".vscode",
-    ".devcontainer",
     "dist"
   ],
   "rules": {

@@ -1,7 +1,6 @@
 dist
 coverage
 node_modules
-.devcontainer
 .vscode
 package-lock.json
 .next
